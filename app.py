@@ -5,18 +5,13 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 
 app = Flask(__name__)
+model = load_model("healthy_vs_rotten.h5")  # Update with your actual model file
 
-# Load your trained model
-model = load_model("healthy_vs_rotten.h5")
-
-# Upload folder path
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Classes
 classes = ['Biodegradable', 'Recyclable', 'Trash']
 
-# Prediction function
 def model_predict(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
     img_array = image.img_to_array(img)
@@ -26,20 +21,18 @@ def model_predict(img_path):
     predicted_class = np.argmax(prediction, axis=1)[0]
     return classes[predicted_class]
 
-# Home page
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# Predict route
 @app.route("/predict", methods=["POST"])
 def predict():
     if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
+        return jsonify({"error": "No file uploaded"})
 
     file = request.files['file']
     if file.filename == '':
-        return jsonify({'error': 'No selected file'})
+        return jsonify({"error": "Empty filename"})
 
     file_path = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(file_path)
@@ -47,12 +40,6 @@ def predict():
     prediction = model_predict(file_path)
 
     return jsonify({
-        'prediction': prediction,
-        'image_path': file_path
+        "prediction": prediction,
+        "image_path": '/' + file_path
     })
-
-# Run the server (for both local and deployment)
-if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
