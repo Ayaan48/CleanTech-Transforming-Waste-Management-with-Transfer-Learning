@@ -5,8 +5,7 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 
 app = Flask(__name__)
-model = load_model("healthy_vs_rotten.h5")  # Update with your actual model file
-
+model = load_model("healthy_vs_rotten.h5")  # your model path
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -15,8 +14,7 @@ classes = ['Biodegradable', 'Recyclable', 'Trash']
 def model_predict(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
     img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array = img_array / 255.0
+    img_array = np.expand_dims(img_array, axis=0) / 255.0
     prediction = model.predict(img_array)
     predicted_class = np.argmax(prediction, axis=1)[0]
     return classes[predicted_class]
@@ -43,3 +41,6 @@ def predict():
         "prediction": prediction,
         "image_path": '/' + file_path
     })
+
+if __name__ == "__main__":
+    app.run(debug=True)
