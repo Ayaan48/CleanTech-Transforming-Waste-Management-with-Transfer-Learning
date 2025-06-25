@@ -1,43 +1,34 @@
-# CleanTech: Transforming Waste Management with Transfer Learning ♻️
+# CleanTech: Transforming Waste Management with Transfer Learning
 
-CleanTech is an AI-powered web application that classifies waste images into three categories — **Biodegradable**, **Recyclable**, and **Trash** — using deep learning and transfer learning. The goal is to encourage smart and sustainable waste segregation through intelligent classification.
+CleanTech is a smart AI-powered solution that classifies waste into three categories: **Biodegradable**, **Recyclable**, and **Trash**. Using deep learning and transfer learning techniques, this project aims to promote environmental awareness and encourage responsible waste disposal.
 
-## 🔍 Features
+## 🌱 Features
 
-- 🧠 **Transfer Learning** with pre-trained models (e.g., MobileNet)
-- 📦 Predicts waste type from uploaded images
-- 🌐 Built using **Flask**, **TensorFlow**, and **HTML/CSS**
-- 🖼️ Real-time image upload and preview
-- 📊 Clean UI with smooth prediction flow
+- 🌍 Classifies waste into 3 categories using a trained TensorFlow model
+- 📷 Image upload interface for real-time predictions
+- 🧠 Built with a custom CNN model using transfer learning
+- 💬 Integrated chatbot for user engagement (optional)
+- 🖥️ Flask-based web interface for smooth interaction
 
----
+## 🛠 Tech Stack
 
-## 🖥️ Tech Stack
-
-| Technology     | Purpose                          |
-|----------------|----------------------------------|
-| Python         | Backend logic & ML model         |
-| Flask          | Web framework                    |
-| TensorFlow/Keras | Deep learning model             |
-| HTML/CSS/JS    | Frontend interface               |
-| Bootstrap      | Styling (optional)               |
-
----
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Python (Flask)
+- **AI/ML**: TensorFlow, Keras, NumPy
+- **Deployment**: Render / Localhost / (Optional: ngrok)
 
 ## 📁 Dataset
 
-We used a custom image dataset consisting of:
-- **Biodegradable** images (organic, compostable materials)
-- **Recyclable** images (plastic, metal, paper)
-- **Trash** images (non-recyclable, mixed waste)
+We used a curated dataset of images representing:
+- Biodegradable items (like food waste)
+- Recyclable items (plastic bottles, paper, etc.)
+- General trash
 
-> 📸 Images were preprocessed and resized to 224x224 before training.
-
----
+The dataset was split into training and testing sets and preprocessed to match model input requirements.
 
 ## 🚀 How to Run Locally
 
-1. **Clone the repository**
+1. **Clone the Repo**
    ```bash
-   git clone https://github.com/your-username/CleanTech-Transforming-Waste-Management-with-Transfer-Learning
+   git clone https://github.com/Ayaan48/CleanTech-Transforming-Waste-Management-with-Transfer-Learning.git
    cd CleanTech-Transforming-Waste-Management-with-Transfer-Learning
